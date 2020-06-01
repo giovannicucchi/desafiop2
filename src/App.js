@@ -26,7 +26,7 @@ export default class DesafioP2Home extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://newsapi.org/v2/top-headlines?country=br&apiKey=d04084406a0a4556b588a7692e20b048')
+    axios.get('https://newsapi.org/v2/top-headlines?country=br&apiKey=d04084406a0a4556b588a7692e20b048')
       .then(
         response => {
           const {articles} = response.data;
@@ -100,15 +100,3 @@ export default class DesafioP2Home extends React.Component {
         );
     }
 }
-
-// function PaginaNoticia() {
-//   // We can use the `useParams` hook here to access
-//   // the dynamic pieces of the URL.
-//   let { id } = useParams();
-
-//   return (
-//     <div>
-//       <h3>ID: {id}</h3>
-//     </div>
-//   );
-// }
