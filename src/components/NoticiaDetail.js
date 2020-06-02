@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import NavBar from './Navbar'
+import NavBar from './Navbar';
+import Footer from './Footer';
 
 export default class NoticiaDetail extends React.Component {
     constructor(props) {
@@ -45,6 +46,7 @@ export default class NoticiaDetail extends React.Component {
                         
                     </div>
                 </Container>
+                <Footer />
             </div>
         )
     }

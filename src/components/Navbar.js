@@ -1,27 +1,34 @@
 import React from 'react';
 import '../App.css';
+import { Link } from "react-router-dom";
 
-import { Navbar, Nav, NavDropdown, Form, FormControl } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, Form, FormControl, Col } from 'react-bootstrap';
 
-class NavBar extends React.Component {
-    render(){
+const NavBar = props => {
+    const {noticias} = props;
+
         return(
             <Navbar expand="lg">
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
+               <Col className='navbar-title'>
                 <Navbar.Brand href="/">Desafio P2</Navbar.Brand>
+                </Col>
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
                    
                     <NavDropdown title="Categorias" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                        <Link to={ { pathname:'/ultimas-noticias', state: { noticias } } } className='dropdown-item'> Últimas Notícias </Link>
+                        <Link to={ { pathname:'/esportes', state: { noticias } } } className='dropdown-item'> Esportes </Link>
+                        <Link to={ { pathname:'/seguranca', state: { noticias } } } className='dropdown-item'> Segurança </Link>
+                        <Link to={ { pathname:'/lazer', state: { noticias } } } className='dropdown-item'> Lazer </Link>
+                      
                         <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        <NavDropdown.Item href="/">Desafio P2</NavDropdown.Item>
                     </NavDropdown>
-                    <Nav.Link href="#home">Últimas Notícias</Nav.Link>
-                    <Nav.Link href="#link">Mais Lidas</Nav.Link>
-                    <Nav.Link href="#link">Aqui Acontece</Nav.Link>
+                    
+                    <Link to={ { pathname:'/ultimas-noticias', state: { noticias } } } className='nav-link'> Últimas Notícias </Link>
+                    <Link to={ { pathname:'/mais-lidas', state: { noticias } } } className='nav-link'> Mais Lidas </Link>
+                    <Link to={ { pathname:'/ultimas-noticias', state: { noticias } } } className='nav-link'> Últimas Notícias </Link>
                     </Nav>
                     <Form inline>
                     <FormControl type="text" placeholder="O que você procura?" className="mr-sm-2" />
@@ -29,7 +36,6 @@ class NavBar extends React.Component {
                 </Navbar.Collapse>
             </Navbar>
         )
-    }
 }
 
 export default NavBar;

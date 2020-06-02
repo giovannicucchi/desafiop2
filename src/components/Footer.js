@@ -1,29 +1,30 @@
 import React from 'react';
 import '../App.css';
 import {Row, Col } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
+const Footer = props => {
+    const {noticias} = props;
 
-class Footer extends React.Component {
-    render(){
         return(
             <Row className='footer'>
                 <Col>
                     <h1>DESAFIO P2</h1>
                     <Row className='footer-row'>
                         <Col>
-                            <p>Política</p>
+                            <Link to={ { pathname:'/politica', state: { noticias } } } className='footer-link'> Política </Link>
                         </Col>
                         <Col>
-                            <p>Esportes</p>
+                            <Link to={ { pathname:'/esportes', state: { noticias } } } className='footer-link'> Esportes </Link>
                         </Col>
                         <Col>
-                            <p>Segurança</p>
+                            <Link to={ { pathname:'/seguranca', state: { noticias } } } className='footer-link'> Segurança </Link>
                         </Col>
                         <Col>
-                            <p>Lazer</p>
+                            <Link to={ { pathname:'/lazer', state: { noticias } } } className='footer-link'> Lazer </Link>
                         </Col>
                         <Col>
-                            <p>Lapa Acontece</p>
+                            <Link to={ { pathname:'/aqui-acontece', state: { noticias } } } className='footer-link'> Lapa Acontece </Link>
                         </Col>
                     </Row>
                     <p>© CopyRight 2020 - Estação da Lapa</p>
@@ -32,8 +33,5 @@ class Footer extends React.Component {
             </Row>
         )
     }
-
-}
-
 
 export default Footer;

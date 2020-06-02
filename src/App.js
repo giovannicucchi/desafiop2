@@ -7,6 +7,7 @@ import Footer from '../src/components/Footer';
 import NoticiaList from '../src/components/NoticiaList';
 import PoliticaList from '../src/components/PoliticaList';
 import NoticiaDetail from '../src/components/NoticiaDetail';
+import CategoriaFoco from '../src/components/CategoriaFoco';
 
 import {
   BrowserRouter as Router,
@@ -39,19 +40,6 @@ export default class DesafioP2Home extends React.Component {
 
             }
           )
-
-
-    // axios.get('https://newsapi.org/v2/top-headlines?country=br&apiKey=d04084406a0a4556b588a7692e20b048')
-    //   .then(
-    //     response => {
-    //       const {articles} = response.data;
-          
-    //       this.setState({
-    //         noticias: articles
-    //       })
-
-    //     }
-    //   )
   } 
   
   render(){
@@ -59,10 +47,18 @@ export default class DesafioP2Home extends React.Component {
         
         <Router>
           <Switch>
+          <Route path="/ultimas-noticias" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Ultimas Notícias'/> } />
+          <Route path="/politica" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Política'/> } />
+          <Route path="/esportes" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Esportes'/> } />
+          <Route path="/seguranca" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Segurança'/> } />
+          <Route path="/lazer" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Lazer'/> } />
+          <Route path="/mais-lidas" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Mais Lidas' /> } />
+          <Route path="/aqui-acontece" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Aqui Acontece' /> } />
+
           <Route path="/:id" render={(props) => <NoticiaDetail {...props}/> } />
             <Route path="/">
               <div>
-                <Navbar />
+                <Navbar noticias={this.state.noticias}/>
 
                 <Container> 
                   <NoticiaList noticias={this.state.noticias} />
