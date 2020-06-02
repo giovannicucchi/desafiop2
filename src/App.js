@@ -26,17 +26,31 @@ export default class DesafioP2Home extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://newsapi.org/v2/top-headlines?country=br&apiKey=d04084406a0a4556b588a7692e20b048')
-      .then(
-        response => {
-          const {articles} = response.data;
-          
-          this.setState({
-            noticias: articles
-          })
 
-        }
-      )
+       axios.get('https://api.breakingapi.com/news?q=climate&type=everything&locale=pt-BR&api_key=CEDF56A8A5194303B2F4E6C22EA361F7')
+          .then(
+            response => {
+              const {articles} = response.data;
+              
+              this.setState({
+                noticias: articles
+              })
+
+            }
+          )
+
+
+    // axios.get('https://newsapi.org/v2/top-headlines?country=br&apiKey=d04084406a0a4556b588a7692e20b048')
+    //   .then(
+    //     response => {
+    //       const {articles} = response.data;
+          
+    //       this.setState({
+    //         noticias: articles
+    //       })
+
+    //     }
+    //   )
   } 
   
   render(){
