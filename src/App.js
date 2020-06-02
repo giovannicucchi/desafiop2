@@ -27,7 +27,8 @@ export default class DesafioP2Home extends React.Component {
 
   componentDidMount() {
 
-       axios.get('https://api.breakingapi.com/news?q=climate&type=everything&locale=pt-BR&api_key=CEDF56A8A5194303B2F4E6C22EA361F7')
+
+       axios.get('https://saurav.tech/NewsAPI/everything/cnn.json')
           .then(
             response => {
               const {articles} = response.data;

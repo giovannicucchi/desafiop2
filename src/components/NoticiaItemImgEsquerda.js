@@ -9,7 +9,7 @@ const NoticiaItemImgEsquerda = props => {
         <div className='noticia-menor'>
             <Row>
                 <Col xs='5'>
-                    <img className='img-noticia-thumb' src={noticias.urlToImage} alt=''></img>
+                    <img className='img-noticia-thumb' src="https://picsum.photos/760/400" alt=''></img>
                 </Col>
                <Col xs='7'>
                     <p className='categoria'>Categoria</p>
