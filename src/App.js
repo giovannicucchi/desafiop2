@@ -8,6 +8,7 @@ import NoticiaList from '../src/components/NoticiaList';
 import PoliticaList from '../src/components/PoliticaList';
 import NoticiaDetail from '../src/components/NoticiaDetail';
 import CategoriaFoco from '../src/components/CategoriaFoco';
+import ResultadosPesquisa from '../src/components/ResultadosPesquisa';
 
 import {
   BrowserRouter as Router,
@@ -22,38 +23,37 @@ export default class DesafioP2Home extends React.Component {
     super(props);
     
     this.state = {
-      noticias: []
+      noticias: [],
+      searchText: ''
     }
   }
 
+
   componentDidMount() {
-
-
        axios.get('https://saurav.tech/NewsAPI/everything/cnn.json')
           .then(
             response => {
               const {articles} = response.data;
-              
               this.setState({
                 noticias: articles
               })
-
             }
           )
-  } 
+  }
   
   render(){
       return(
         
         <Router>
           <Switch>
-          <Route path="/ultimas-noticias" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Ultimas Notícias'/> } />
-          <Route path="/politica" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Política'/> } />
-          <Route path="/esportes" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Esportes'/> } />
-          <Route path="/seguranca" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Segurança'/> } />
-          <Route path="/lazer" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Lazer'/> } />
-          <Route path="/mais-lidas" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Mais Lidas' /> } />
-          <Route path="/aqui-acontece" render={(props) => <CategoriaFoco noticias={this.state.noticias} categoria='Aqui Acontece' /> } />
+          <Route path="/ultimas-noticias" render={(props) => <CategoriaFoco categoria='general'/> } />
+          <Route path="/esportes" render={(props) => <CategoriaFoco categoria='sports' /> } />
+          <Route path="/negocios" render={(props) => <CategoriaFoco categoria='business' /> } />
+          <Route path="/lazer" render={(props) => <CategoriaFoco categoria='entertainment' /> } />
+          <Route path="/mais-lidas" render={(props) => <CategoriaFoco categoria='general' /> }/>
+          <Route path="/aqui-acontece" render={(props) => <CategoriaFoco categoria='general' /> } />
+
+          <Route path="/results/" render={(props) => <ResultadosPesquisa pesquisa={props} />} />
 
           <Route path="/:id" render={(props) => <NoticiaDetail {...props}/> } />
             <Route path="/">
@@ -61,6 +61,7 @@ export default class DesafioP2Home extends React.Component {
                 <Navbar noticias={this.state.noticias}/>
 
                 <Container> 
+                  
                   <NoticiaList noticias={this.state.noticias} />
                 </Container>
 

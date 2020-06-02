@@ -2,26 +2,49 @@ import React from 'react';
 import { Container } from 'react-bootstrap';
 import NavBar from './Navbar'
 import PoliticaList from './PoliticaList';
+import axios from 'axios';
 
 
 export default class CategoriaFoco extends React.Component {
+    
     constructor(props) {
         super(props);
         
         this.state = {
-          noticias: []
+          noticias: [],
+          categoria: ''
         }
       }
 
-      componentDidMount() {
-        console.log(this.props)
-        this.setState({
-            noticias: this.props.noticias
-        })
-    }
+      atualizar() {
+        axios.get(`https://saurav.tech/NewsAPI/top-headlines/category/${this.props.categoria}/us.json`)
+        .then(
+          response => {
+            const {articles} = response.data;
+            
+            this.setState({
+              noticias: articles,
+              categoria: this.props.categoria
+            })
+          }
+        )
+     } 
 
-    render (){
+      componentDidMount() {
+        this.atualizar()
+    } 
+   
+    componentDidUpdate(prevProps) {
+        //Typical usage, don't forget to compare the props
+        if (this.props.categoria !== prevProps.categoria) {
+          this.atualizar();
+        }
+       }
+
+    render (){      
+    
         return (
+            
             <div className='noticia-detail'>
                 <NavBar/>
                 
