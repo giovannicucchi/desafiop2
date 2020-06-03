@@ -17,11 +17,7 @@ export default class NavBar extends React.Component {
         this.setState({
           searchText: event.target.value
         });
-        console.log(this.state.searchText)
       };
-    
-     
-      
 
     render(){
       
@@ -37,7 +33,7 @@ export default class NavBar extends React.Component {
                     <NavDropdown title="Categorias" id="basic-nav-dropdown">
                         <Link to='/ultimas-noticias' categoria='general' className='dropdown-item'> Últimas Notícias </Link>
                         <Link to='/esportes' categoria='sports' className='dropdown-item'> Esportes </Link>
-                        <Link to='/negocios' categoria='business' className='dropdown-item'> Negócios </Link>
+                        <Link to='/ciencias' categoria='science' className='dropdown-item'> Ciências </Link>
                         <Link to='/lazer' categoria='entertainment' className='dropdown-item'> Lazer </Link>
                       
                         <NavDropdown.Divider />
@@ -52,15 +48,16 @@ export default class NavBar extends React.Component {
                     <FormControl onChange={this.handleSearchInput}
                         value={this.state.searchText}
                         type="text"
-                        placeholder="Search"
-                        className="mr-sm-2" />
-                    <Link to={{ 
-                        pathname: `results/${this.state.searchText}`,
-                        state: {
-                            searchText: this.state.searchText
-                          }
-
-                     }} pesquisa={this.value} > PESQUISAR </Link>
+                        placeholder="O que você procura?"
+                        className="mr-sm-2"
+                        onKeyDown={this._handleKeyDown} />
+                    
+                        <Link to={{ 
+                            pathname: `results/${this.state.searchText}`,
+                            state: {
+                                searchText: this.state.searchText
+                            }
+                        }} pesquisa={this.value} > Pesquisar </Link>
                     </Form>
                 
                 </Navbar.Collapse>

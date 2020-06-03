@@ -20,7 +20,7 @@ const NoticiaItemDestaque = props => {
             <Row>
                 <Col>
                     <p className='categoria'>Categoria</p>
-                    <Link to={ { pathname: `${noticias.title}`, state: { noticias } } } className='titulo-noticia-destaque'>
+                    <Link to={ { pathname: `/${noticias.title}`, state: { noticias } } } className='titulo-noticia-destaque'>
                          <h1>{noticias.title}</h1>
                     </Link>
                     <p>{noticias.publishedAt}</p>

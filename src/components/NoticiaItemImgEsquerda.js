@@ -13,7 +13,7 @@ const NoticiaItemImgEsquerda = props => {
                 </Col>
                <Col xs='7'>
                     <p className='categoria'>Categoria</p>
-                    <Link to={ { pathname: `${noticias.title}`, state: { noticias } } } className='titulo-noticia-menor'>{noticias.title}</Link>
+                    <Link to={ { pathname: `/${noticias.title}`, state: { noticias } } } className='titulo-noticia-menor'>{noticias.title}</Link>
                     <p>{noticias.publishedAt}</p>
                 </Col>
             </Row>

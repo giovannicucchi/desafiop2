@@ -23,7 +23,6 @@ export default class NoticiaDetail extends React.Component {
     render (){
         return (
             <div className='noticia-detail'>
-                <NavBar/>
                 <Container>
                     <Row>
                         <Col xs='12' lg='6'>
@@ -46,7 +45,6 @@ export default class NoticiaDetail extends React.Component {
                         
                     </div>
                 </Container>
-                <Footer />
             </div>
         )
     }

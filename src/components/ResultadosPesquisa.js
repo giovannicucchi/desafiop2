@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import {Row, Col } from 'react-bootstrap';
+import {Row, Col, Container } from 'react-bootstrap';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import NoticiaItemImgDireita from './NoticiaItemImgDireita';
@@ -14,9 +14,7 @@ export default class ResultadoPesquisa extends React.Component {
         }
     }
 
-      componentDidMount() {
-        
-        // console.log('filtro: ', filtro)
+      componentDidMount() {        
         axios.get('https://saurav.tech/NewsAPI/everything/cnn.json')
           .then(
             response => {
@@ -25,8 +23,7 @@ export default class ResultadoPesquisa extends React.Component {
                 noticias: articles
               })
             }
-          )
-                
+          )     
         }
 
     render() {
@@ -35,18 +32,21 @@ export default class ResultadoPesquisa extends React.Component {
     
         this.state.noticias.map(noticias => {
             
-            console.log(noticias.title.search(filtro))
             if ( (noticias.title.search(filtro)) !== -1) {
                 noticiasFiltradas.push(noticias)
             }
-            console.log(noticiasFiltradas)
         })
+
         return (
-            <div>
-                {noticiasFiltradas.map(noticias => (
-                    <NoticiaItemImgDireita noticias={noticias} />
-                ))}
-            </div>
+            <Container>
+              <Row>
+                <Col>
+                  {noticiasFiltradas.map(noticias => (
+                      <NoticiaItemImgDireita noticias={noticias} />
+                  ))}
+                  </Col>
+                </Row>
+            </Container>
         )
     }
 }

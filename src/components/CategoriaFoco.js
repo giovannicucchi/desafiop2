@@ -35,7 +35,6 @@ export default class CategoriaFoco extends React.Component {
     } 
    
     componentDidUpdate(prevProps) {
-        //Typical usage, don't forget to compare the props
         if (this.props.categoria !== prevProps.categoria) {
           this.atualizar();
         }
@@ -45,11 +44,9 @@ export default class CategoriaFoco extends React.Component {
     
         return (
             
-            <div className='noticia-detail'>
-                <NavBar/>
-                
+            <div className='noticia-detail'>                
                 <Container> 
-                    <h1>{this.props.categoria}</h1>
+                    <h1>{this.props.categoria.toUpperCase()}</h1>
                     <PoliticaList noticias={this.state.noticias} />
                 </Container>
             </div>
